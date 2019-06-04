@@ -1,17 +1,20 @@
-import { FETCH_COMMENTS } from './types';
+import axios from 'axios'
+import { FETCH_USERS } from './types'
 
-import axios from 'axios';
+import {
+  API,
+  limitQuery,
+  limitUserResults,
+  offsetQuery
+} from '../apiConfiguration'
 
-const api = 'https://jsonplaceholder.typicode.com/';
-
-const headers = {
+export const headers = {
   Accept: 'application/json'
-};
+}
 
-//export function fetchComments() {
-export const fetchComments = () => dispatch => {
-  const query = 'comments';
-  const endPoint = `${api}${query}`;
+// export function fetchUsers() {
+export const fetchUsers = () => dispatch => {
+  const endPoint = `${API}?${limitQuery}${limitUserResults}&${offsetQuery}${30}`
 
   /*
   const request = axios.get(endPoint, { headers });
@@ -21,6 +24,6 @@ export const fetchComments = () => dispatch => {
   };
 */
   return axios.get(endPoint, { headers }).then(response => {
-    dispatch({ type: FETCH_COMMENTS, payload: response.data });
-  });
-};
+    dispatch({ type: FETCH_USERS, payload: response.data })
+  })
+}
