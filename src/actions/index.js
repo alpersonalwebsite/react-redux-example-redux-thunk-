@@ -13,17 +13,13 @@ export const headers = {
 }
 
 // export function fetchUsers() {
-export const fetchUsers = () => dispatch => {
+export const fetchUsers = () => async dispatch => {
   const endPoint = `${API}?${limitQuery}${limitUserResults}&${offsetQuery}${30}`
 
-  /*
-  const request = axios.get(endPoint, { headers });
-  return {
-    type: FETCH_COMMENTS,
-    payload: request
-  };
-*/
-  return axios.get(endPoint, { headers }).then(response => {
-    dispatch({ type: FETCH_USERS, payload: response.data })
-  })
+  try {
+    const response = await axios.get(endPoint, { headers })
+    return dispatch({ type: FETCH_USERS, payload: response.data })
+  } catch (err) {
+    console.log('err', err)
+  }
 }
