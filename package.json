@@ -2,7 +2,13 @@
   "name": "react-redux-example-redux-thunk",
   "version": "0.1.0",
   "description": "A simple example of implementing redux with react and redux-thunk",
-  "keywords": ["react redux", "redux store", "redux thunk", "react redux circleci", "react redux heroku"],
+  "keywords": [
+    "react redux",
+    "redux store",
+    "redux thunk",
+    "react redux circleci",
+    "react redux heroku"
+  ],
   "author": "Al Diaz",
   "license": "MIT",
   "dependencies": {
